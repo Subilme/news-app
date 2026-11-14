@@ -11,6 +11,7 @@ import com.zonnon.newsapp.domain.usecases.app_entry.ReadAppEntry
 import com.zonnon.newsapp.domain.usecases.app_entry.SaveAppEntry
 import com.zonnon.newsapp.domain.usecases.news.GetNews
 import com.zonnon.newsapp.domain.usecases.news.NewsUsecases
+import com.zonnon.newsapp.domain.usecases.news.SearchNews
 import com.zonnon.newsapp.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -61,7 +62,8 @@ object AppModule {
         newsRepository: NewsRepository
     ): NewsUsecases {
         return NewsUsecases(
-            getNews = GetNews(newsRepository = newsRepository)
+            getNews = GetNews(newsRepository = newsRepository),
+            searchNews = SearchNews(newsRepository = newsRepository)
         )
     }
 }
