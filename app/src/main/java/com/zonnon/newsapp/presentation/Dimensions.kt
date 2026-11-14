@@ -1,4 +1,4 @@
-package com.zonnon.newsapp.presentation.onboarding
+package com.zonnon.newsapp.presentation
 
 import androidx.compose.ui.unit.dp
 

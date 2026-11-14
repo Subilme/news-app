@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/App.Starting.Theme">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.main.MainActivity"
             android:exported="true"
             android:theme="@style/App.Starting.Theme"
             android:windowSoftInputMode="adjustResize">
