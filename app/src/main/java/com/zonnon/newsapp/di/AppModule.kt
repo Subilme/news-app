@@ -13,9 +13,12 @@ import com.zonnon.newsapp.domain.repositories.NewsRepository
 import com.zonnon.newsapp.domain.usecases.app_entry.AppEntryUsecases
 import com.zonnon.newsapp.domain.usecases.app_entry.ReadAppEntry
 import com.zonnon.newsapp.domain.usecases.app_entry.SaveAppEntry
+import com.zonnon.newsapp.domain.usecases.news.DeleteArticle
 import com.zonnon.newsapp.domain.usecases.news.GetNews
 import com.zonnon.newsapp.domain.usecases.news.NewsUsecases
 import com.zonnon.newsapp.domain.usecases.news.SearchNews
+import com.zonnon.newsapp.domain.usecases.news.SelectArticles
+import com.zonnon.newsapp.domain.usecases.news.UpsertArticle
 import com.zonnon.newsapp.util.Constants.BASE_URL
 import com.zonnon.newsapp.util.Constants.NEWS_DATABASE_NAME
 import dagger.Module
@@ -64,11 +67,15 @@ object AppModule {
     @Provides
     @Singleton
     fun providesNewUsecases(
-        newsRepository: NewsRepository
+        newsRepository: NewsRepository,
+        newsDao: NewsDao
     ): NewsUsecases {
         return NewsUsecases(
             getNews = GetNews(newsRepository = newsRepository),
-            searchNews = SearchNews(newsRepository = newsRepository)
+            searchNews = SearchNews(newsRepository = newsRepository),
+            upsertArticle = UpsertArticle(newsDao = newsDao),
+            deleteArticle = DeleteArticle(newsDao = newsDao),
+            selectArticles = SelectArticles(newsDao = newsDao)
         )
     }
 

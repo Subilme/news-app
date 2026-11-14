@@ -17,6 +17,24 @@ import com.zonnon.newsapp.presentation.Dimensions.MediumPadding1
 @Composable
 fun ArticlesList(
     modifier: Modifier = Modifier,
+    articles: List<Article>,
+    onClick: (Article) -> Unit
+) {
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(MediumPadding1),
+        contentPadding = PaddingValues(all = ExtraSmallPadding2)
+    ) {
+        items(count = articles.size) { index ->
+            ArticleCard(article = articles[index], onClick = { onClick(articles[index]) })
+        }
+    }
+}
+
+
+@Composable
+fun ArticlesList(
+    modifier: Modifier = Modifier,
     articles: LazyPagingItems<Article>,
     onClick: (Article) -> Unit
 ) {
@@ -34,7 +52,6 @@ fun ArticlesList(
             }
         }
     }
-
 }
 
 @Composable
