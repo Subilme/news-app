@@ -27,7 +27,9 @@ import com.zonnon.newsapp.presentation.onboarding.components.OnBoardingPage
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingScreen() {
+fun OnboardingScreen(
+    event: (OnboardingEvent) -> Unit
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) { pages.size }
 
@@ -76,8 +78,8 @@ fun OnboardingScreen() {
                 NewsButton(
                     text = buttonState.value[1],
                     onClick = {
-                        if (pagerState.currentPage == pages.size) {
-                            // TODO: Navigate to Home Screen
+                        if (pagerState.currentPage == pages.size - 1) {
+                            event(OnboardingEvent.SaveAppEntry)
                         } else {
                             scope.launch {
                                 pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
