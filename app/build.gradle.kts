@@ -1,3 +1,14 @@
+import java.util.Properties
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        file.inputStream().use { load(it) }
+    }
+}
+
+val newsApiKey = localProperties.getProperty("NEWS_API_KEY") ?: ""
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -19,6 +30,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "NEWS_API_KEY",
+            "\"$newsApiKey\""
+        )
     }
 
     buildTypes {
@@ -35,6 +52,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     packaging {
         resources {
@@ -66,6 +84,17 @@ dependencies {
     implementation(libs.com.google.dagger.hilt)
     ksp(libs.com.google.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation)
+
+    //Retrofit
+    implementation(libs.com.squareup.retrofit2)
+    implementation(libs.com.squareup.retrofit2.converter.gson)
+
+    //Coil
+    implementation(libs.io.coil.kt)
     //Datastore
     implementation(libs.androidx.datastore.preferences)
+
+    //Paging 3
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
 }

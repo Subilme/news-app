@@ -1,4 +1,4 @@
-package com.zonnon.newsapp.domain.usecases
+package com.zonnon.newsapp.domain.usecases.app_entry
 
 import com.zonnon.newsapp.domain.manager.LocalUserManager
 
