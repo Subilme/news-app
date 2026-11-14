@@ -18,7 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.zonnon.newsapp.R
-import com.zonnon.newsapp.presentation.onboarding.Dimensions
+import com.zonnon.newsapp.presentation.Dimensions
 import com.zonnon.newsapp.presentation.onboarding.Page
 import com.zonnon.newsapp.presentation.onboarding.pages
 import com.zonnon.newsapp.ui.theme.NewsAppTheme

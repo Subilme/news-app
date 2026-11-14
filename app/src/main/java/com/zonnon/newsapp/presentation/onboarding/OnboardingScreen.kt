@@ -17,12 +17,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.zonnon.newsapp.presentation.common.NewsButton
 import com.zonnon.newsapp.presentation.common.NewsTextButton
 import com.zonnon.newsapp.presentation.common.PageIndicator
-import com.zonnon.newsapp.presentation.onboarding.Dimensions.MediumPadding2
-import com.zonnon.newsapp.presentation.onboarding.Dimensions.PageIndicatorWidth
+import com.zonnon.newsapp.presentation.Dimensions.MediumPadding2
+import com.zonnon.newsapp.presentation.Dimensions.PageIndicatorWidth
 import com.zonnon.newsapp.presentation.onboarding.components.OnBoardingPage
 import kotlinx.coroutines.launch
 
