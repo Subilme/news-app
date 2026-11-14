@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -79,6 +80,9 @@ dependencies {
 
     // Splash Api
     implementation(libs.androidx.core.splashscreen)
+
+    //Compose Navigation
+    implementation(libs.androidx.navigation.compose)
 
     //Dagger Hilt
     implementation(libs.com.google.dagger.hilt)

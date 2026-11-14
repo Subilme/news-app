@@ -5,13 +5,16 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.zonnon.newsapp.data.NewsPagingSource
 import com.zonnon.newsapp.data.SearchNewsPagingSource
+import com.zonnon.newsapp.data.local.NewsDao
 import com.zonnon.newsapp.data.remote.NewsApi
 import com.zonnon.newsapp.domain.models.Article
 import com.zonnon.newsapp.domain.repositories.NewsRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.onEach
 
 class NewsRepositoryImpl(
-    private val newsApi: NewsApi
+    private val newsApi: NewsApi,
+    private val newsDao: NewsDao
 ) : NewsRepository {
     override fun getNews(sources: List<String>): Flow<PagingData<Article>> {
         return Pager(
@@ -36,5 +39,21 @@ class NewsRepositoryImpl(
                 )
             }
         ).flow
+    }
+
+    override suspend fun upsertArticle(article: Article) {
+        newsDao.upsert(article)
+    }
+
+    override suspend fun deleteArticle(article: Article) {
+        newsDao.delete(article)
+    }
+
+    override fun getArticles(): Flow<List<Article>> {
+        return newsDao.getArticles()
+    }
+
+    override suspend fun getArticle(url: String): Article? {
+        return newsDao.getArticle(url = url)
     }
 }

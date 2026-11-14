@@ -17,6 +17,7 @@ import com.zonnon.newsapp.domain.usecases.news.DeleteArticle
 import com.zonnon.newsapp.domain.usecases.news.GetNews
 import com.zonnon.newsapp.domain.usecases.news.NewsUsecases
 import com.zonnon.newsapp.domain.usecases.news.SearchNews
+import com.zonnon.newsapp.domain.usecases.news.SelectArticle
 import com.zonnon.newsapp.domain.usecases.news.SelectArticles
 import com.zonnon.newsapp.domain.usecases.news.UpsertArticle
 import com.zonnon.newsapp.util.Constants.BASE_URL
@@ -61,21 +62,22 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewRepository(
-        newsApi: NewsApi
-    ): NewsRepository = NewsRepositoryImpl(newsApi = newsApi)
+        newsApi: NewsApi,
+        newsDao: NewsDao
+    ): NewsRepository = NewsRepositoryImpl(newsApi = newsApi, newsDao = newsDao)
 
     @Provides
     @Singleton
     fun providesNewUsecases(
         newsRepository: NewsRepository,
-        newsDao: NewsDao
     ): NewsUsecases {
         return NewsUsecases(
             getNews = GetNews(newsRepository = newsRepository),
             searchNews = SearchNews(newsRepository = newsRepository),
-            upsertArticle = UpsertArticle(newsDao = newsDao),
-            deleteArticle = DeleteArticle(newsDao = newsDao),
-            selectArticles = SelectArticles(newsDao = newsDao)
+            upsertArticle = UpsertArticle(newsRepository = newsRepository),
+            deleteArticle = DeleteArticle(newsRepository = newsRepository),
+            selectArticles = SelectArticles(newsRepository = newsRepository),
+            selectArticle = SelectArticle(newsRepository = newsRepository)
         )
     }
 
