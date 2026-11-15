@@ -79,13 +79,11 @@ fun ArticleCard(
                     tint = colorResource(id = R.color.body)
                 )
                 Spacer(modifier = Modifier.width(ExtraSmallPadding2))
-                article.publishedAt?.let {
-                    Text(
-                        text = it,
-                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                        color = colorResource(id = R.color.body),
-                    )
-                }
+                Text(
+                    text = article.publishedAt,
+                    style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                    color = colorResource(id = R.color.body),
+                )
             }
         }
     }

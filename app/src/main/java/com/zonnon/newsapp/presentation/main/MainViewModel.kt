@@ -16,7 +16,7 @@ import kotlin.time.Duration.Companion.milliseconds
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val appEntryUsecases: AppEntryUsecases
+    appEntryUsecases: AppEntryUsecases
 ) : ViewModel() {
     var splashCondition by mutableStateOf(true)
         private set

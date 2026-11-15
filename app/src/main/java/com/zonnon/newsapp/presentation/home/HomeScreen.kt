@@ -26,7 +26,6 @@ import com.zonnon.newsapp.domain.models.Article
 import com.zonnon.newsapp.presentation.Dimensions.MediumPadding1
 import com.zonnon.newsapp.presentation.common.ArticlesList
 import com.zonnon.newsapp.presentation.common.SearchBar
-import com.zonnon.newsapp.presentation.navgraph.Route
 
 @Composable
 fun HomeScreen(

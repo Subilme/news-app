@@ -10,7 +10,7 @@ class SearchNewsPagingSource(
     private val searchQuery: String,
     private val sources: String
 ) : PagingSource<Int, Article>() {
-    private var totalNewsCount = 0;
+    private var totalNewsCount = 0
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1

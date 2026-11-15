@@ -10,7 +10,6 @@ import com.zonnon.newsapp.data.remote.NewsApi
 import com.zonnon.newsapp.domain.models.Article
 import com.zonnon.newsapp.domain.repositories.NewsRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.onEach
 
 class NewsRepositoryImpl(
     private val newsApi: NewsApi,
