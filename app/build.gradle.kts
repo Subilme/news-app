@@ -95,6 +95,7 @@ dependencies {
 
     //Coil
     implementation(libs.io.coil.kt)
+
     //Datastore
     implementation(libs.androidx.datastore.preferences)
 
